@@ -1,131 +1,160 @@
 <!DOCTYPE html>
-<html lang="lv">
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mana digitālā vizītkarte</title>
+
+    <title>My Digital Profile</title>
+
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<header>
-    <h1>Georgy</h1>
+    <header>
+        <h1>Georgy</h1>
 
-    <nav>
-        <ul>
-            <li><a href="#par-mani">Par mani</a></li>
-            <li><a href="#prasmes">Prasmes</a></li>
-            <li><a href="#kontakti">Kontakti</a></li>
-        </ul>
-    </nav>
-</header>
-
-<main>
-
-    <section id="par-mani">
-        <h2>Par mani</h2>
-
-        <img src="photo.jpg" alt="Georgy profila fotogrāfija">
-
-        <p>
-            Mani sauc Georgy. Es mācos programmēšanu un mani interesē
-            <span class="izcelts">informācijas tehnoloģijas</span>,
-            datoru sistēmas un programmēšana.
-        </p>
-
-        <p>
-            Brīvajā laikā man patīk sports, datorspēles un jaunu tehnoloģiju apgūšana.
-        </p>
-    </section>
-
-    <section id="prasmes">
-        <h2>Manas prasmes</h2>
-
-        <article>
-            <h3>Programmēšana</h3>
-
+        <nav>
             <ul>
-                <li>HTML un CSS</li>
-                <li>Python</li>
-                <li>C un C++</li>
-                <li>Git un GitHub</li>
+                <li><a href="#about">About me</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
-        </article>
+        </nav>
+    </header>
 
-        <article>
-            <h3>Informācija par prasmēm</h3>
+    <main>
 
-            <table>
-                <tr>
-                    <th>Prasme</th>
-                    <th>Līmenis</th>
-                </tr>
+        <section id="about">
 
-                <tr>
-                    <td>HTML</td>
-                    <td>Labs</td>
-                </tr>
+            <h2>About me</h2>
 
-                <tr>
-                    <td>CSS</td>
-                    <td>Vidējs</td>
-                </tr>
+            <img src="./my-photo.jpg" alt="Georgy profile photo">
 
-                <tr>
-                    <td>Python</td>
-                    <td>Vidējs</td>
-                </tr>
-            </table>
-        </article>
-    </section>
+            <p>
+                My name is <strong>Georgy</strong>.
+                I study programming and I am interested in
+                <em>information technologies</em>,
+                computer systems and software development.
+            </p>
 
-    <section id="kontakti">
-        <h2>Kontakti</h2>
+            <p>
+                My main interest is
+                <span class="highlighted">programming</span>.
+            </p>
 
-        <form>
-            <label for="name">Vārds</label>
-            <input type="text" id="name" name="name">
+            <p>
+                In my free time I enjoy sports, video games and
+                <span>learning new technologies</span>.
+            </p>
 
-            <label for="email">E-pasts</label>
-            <input type="email" id="email" name="email">
+        </section>
 
-            <label for="topic">Tēma</label>
-            <select id="topic" name="topic">
-                <option>Jautājums</option>
-                <option>Sadarbība</option>
-                <option>Cits</option>
-            </select>
+        <section id="skills">
 
-            <label for="message">Ziņa</label>
-            <textarea id="message" name="message" rows="5"></textarea>
+            <h2>My skills</h2>
 
-            <button type="submit">Nosūtīt</button>
-        </form>
-    </section>
+            <article>
 
-    <aside>
-        <h2>Papildu informācija</h2>
+                <h3>Programming</h3>
 
-        <p>
-            Es vēlos nākotnē strādāt IT nozarē un attīstīt savas
-            programmēšanas prasmes.
+                <ul>
+                    <li>HTML and CSS</li>
+                    <li>Python</li>
+                    <li>C and C++</li>
+                    <li>Git and GitHub</li>
+                </ul>
+
+            </article>
+
+            <article>
+
+                <h3>Skill level</h3>
+
+                <table>
+
+                    <tr>
+                        <th>Skill</th>
+                        <th>Level</th>
+                    </tr>
+
+                    <tr>
+                        <td>HTML</td>
+                        <td>Good</td>
+                    </tr>
+
+                    <tr>
+                        <td>CSS</td>
+                        <td>Intermediate</td>
+                    </tr>
+
+                    <tr>
+                        <td>Python</td>
+                        <td>Intermediate</td>
+                    </tr>
+
+                </table>
+
+            </article>
+
+        </section>
+
+        <section id="contact">
+
+            <h2>Contact</h2>
+
+            <form>
+
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name">
+
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email">
+
+                <label for="topic">Topic</label>
+
+                <select id="topic" name="topic">
+                    <option>Question</option>
+                    <option>Cooperation</option>
+                    <option>Other</option>
+                </select>
+
+                <label for="message">Message</label>
+
+                <textarea id="message" name="message" rows="5"></textarea>
+
+                <button type="submit">Send</button>
+
+            </form>
+
+        </section>
+
+        <aside>
+
+            <h2>Additional information</h2>
+
+            <p>
+                I want to work in the IT industry in the future
+                and improve my programming skills.
+            </p>
+
+        </aside>
+
+        <p class="hide-display">
+            This element was used to test display: none.
         </p>
-    </aside>
 
-    <p class="hide-display">
-        This element was used to test display: none.
-    </p>
+        <p class="hide-visibility">
+            This element was used to test visibility: hidden.
+        </p>
 
-    <p class="hide-visibility">
-        This element was used to test visibility: hidden.
-    </p>
+    </main>
 
-</main>
-
-<footer>
-    <p>© 2026 Georgy</p>
-</footer>
+    <footer>
+        <p>© 2026 Georgy</p>
+    </footer>
 
 </body>
+
 </html>

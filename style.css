@@ -5,94 +5,157 @@ p
 section
 
 Inline elements:
-a
-span
 strong
+em
+span
 */
+
+* {
+    box-sizing: border-box;
+}
 
 body {
     font-family: Arial, sans-serif;
     background-color: rgb(240, 240, 240);
     margin: 0;
-    padding: 0;
+    color: #222222;
 }
 
 header {
     background-color: #1a5fb4;
     color: white;
-    padding: 20px;
     text-align: center;
+    padding: 20px;
 }
 
 h1 {
-    margin-top: 0;
-}
-
-main {
-    width: 80%;
-    max-width: 900px;
-    margin: 20px auto;
-    background-color: white;
-    padding: 20px;
-    border: 2px solid #dddddd;
-    box-sizing: border-box;
-}
-
-section {
-    margin-bottom: 30px;
-    padding: 15px;
-    border: 1px solid #cccccc;
-}
-
-h2 {
-    background-color: lightgray;
-    padding: 8px;
+    margin: 0 0 15px 0;
 }
 
 nav ul {
     list-style-type: none;
-    padding: 0;
     margin: 0;
+    padding: 0;
 }
 
 nav li {
     display: inline-block;
-    margin-right: 10px;
+    margin: 0 5px;
 }
 
 nav a {
     display: inline-block;
+    background-color: #1554a0;
     color: white;
-    background-color: #164d91;
     text-decoration: none;
     padding: 8px 16px;
-    border-radius: 6px;
+    border-radius: 5px;
 }
 
-span.izcelts {
+nav a:hover {
+    background-color: #0d4385;
+}
+
+main {
+    width: 90%;
+    max-width: 900px;
+    margin: 25px auto;
+    background-color: white;
+    padding: 25px;
+    border: 1px solid #cccccc;
+}
+
+section {
+    margin-bottom: 25px;
+    padding: 20px;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+}
+
+h2 {
+    background-color: #eeeeee;
+    padding: 10px;
+    margin-top: 0;
+    border-left: 4px solid #1a5fb4;
+}
+
+p {
+    line-height: 1.6;
+}
+
+span.highlighted {
     display: inline-block;
     width: 200px;
     height: 40px;
+    line-height: 40px;
+    text-align: center;
     background-color: lightyellow;
-    border: 1px solid black;
+    border: 1px solid #777777;
+    border-radius: 4px;
+    vertical-align: middle;
 }
 
 /*
 When the span was inline, width and height did not work because
 inline elements are sized according to their content.
 
-After changing it to inline-block, width and height started working
-while the element could still stay in the same line with other content.
+After changing it to inline-block, width and height started working,
+while the element can still stay in the same line with other content.
 */
 
+img {
+    display: block;
+    width: 220px;
+    max-width: 100%;
+    height: auto;
+    margin: 15px auto;
+    border-radius: 8px;
+}
+
+/*
+margin: 0 auto did not center the image while it was inline because
+an inline element behaves like part of a text line.
+
+After changing the image to display: block, the automatic left and
+right margins can center it.
+*/
+
+ul {
+    line-height: 1.6;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+table,
+th,
+td {
+    border: 1px solid #777777;
+}
+
+th,
+td {
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #eeeeee;
+}
+
 form {
-    max-width: 400px;
+    width: 100%;
+    max-width: 500px;
 }
 
 form label {
     display: block;
     margin-top: 12px;
     margin-bottom: 5px;
+    font-weight: bold;
 }
 
 form input,
@@ -100,32 +163,38 @@ form select,
 form textarea {
     display: block;
     width: 100%;
-    padding: 8px;
-    box-sizing: border-box;
+    padding: 9px;
+    border: 1px solid #999999;
+    border-radius: 4px;
+    font-family: Arial, sans-serif;
+}
+
+form textarea {
+    resize: vertical;
 }
 
 form button {
     display: block;
     margin-top: 15px;
+    background-color: #1a5fb4;
+    color: white;
+    border: none;
     padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
-img {
-    display: block;
-    width: 250px;
-    max-width: 100%;
-    height: auto;
-    margin: 0 auto;
+form button:hover {
+    background-color: #1554a0;
 }
 
-/*
-margin: 0 auto did not center the image while it was inline because
-an inline element stays inside a text line and does not behave like
-a block box.
-
-After using display: block, the automatic left and right margins
-can center the image.
-*/
+aside {
+    background-color: rgb(230, 240, 255);
+    padding: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-left: 4px solid #1a5fb4;
+}
 
 /*
 .hide-display {
@@ -163,39 +232,13 @@ b) Do width and height work? Yes.
 c) If width is not specified, it is only as wide as its content.
 */
 
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 10px;
-}
-
-table,
-th,
-td {
-    border: 1px solid black;
-}
-
-th,
-td {
-    padding: 10px;
-    text-align: left;
-}
-
-th {
-    background-color: #eeeeee;
-}
-
-aside {
-    background-color: rgb(230, 240, 255);
-    padding: 15px;
-    margin-top: 20px;
-    border-left: 5px solid #1a5fb4;
-}
-
 footer {
     background-color: #333333;
     color: white;
     text-align: center;
     padding: 15px;
-    margin-top: 20px;
+}
+
+footer p {
+    margin: 0;
 }
