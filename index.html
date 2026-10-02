@@ -1,141 +1,131 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="lv">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Digital Card</title>
+    <title>Mana digitālā vizītkarte</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <header>
-        <h1>My Business Card</h1>
-    </header>
+
+<header>
+    <h1>Georgy</h1>
 
     <nav>
         <ul>
-            <li><a href="#about">About Me</a></li>
-            <li><a href="#hobbies">My Hobbies</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="#par-mani">Par mani</a></li>
+            <li><a href="#prasmes">Prasmes</a></li>
+            <li><a href="#kontakti">Kontakti</a></li>
         </ul>
     </nav>
+</header>
 
-    <main>
-        <h1>Georgy Kuchvalskiy</h1>
+<main>
 
-        <section>
-            <h2>My Image</h2>
-            <img src="./my-photo.jpg"
-                 alt="Photo of Georgy Kuchvalskiy"
-                 width="300">
-        </section>
+    <section id="par-mani">
+        <h2>Par mani</h2>
 
-        <article id="about" class="kartite">
-            <h2>My Story</h2>
+        <img src="photo.jpg" alt="Georgy profila fotogrāfija">
 
-            <p>
-                My name is Georgy. I am a programming student.
-                I am interested in <b>technology</b> and <i>sports</i>.<br>
-                In my free time, I like playing computer games
-                and spending time with my friends.
-            </p>
-        </article>
+        <p>
+            Mani sauc Georgy. Es mācos programmēšanu un mani interesē
+            <span class="izcelts">informācijas tehnoloģijas</span>,
+            datoru sistēmas un programmēšana.
+        </p>
 
-        <aside>
-            <h2>Quick Facts About Me</h2>
+        <p>
+            Brīvajā laikā man patīk sports, datorspēles un jaunu tehnoloģiju apgūšana.
+        </p>
+    </section>
 
-            <p>
-                I am a programming student.<br>
-                I like sports and computers.<br>
-                I am interested in cars and travelling.
-            </p>
-        </aside>
+    <section id="prasmes">
+        <h2>Manas prasmes</h2>
 
-        <section id="hobbies">
-            <h2>My Hobbies</h2>
+        <article>
+            <h3>Programmēšana</h3>
 
             <ul>
-                <li>Sports</li>
-                <li>Computer games</li>
-                <li>Programming</li>
+                <li>HTML un CSS</li>
+                <li>Python</li>
+                <li>C un C++</li>
+                <li>Git un GitHub</li>
             </ul>
-        </section>
+        </article>
 
-        <hr>
-
-        <section>
-            <h2>My Weekly Schedule</h2>
+        <article>
+            <h3>Informācija par prasmēm</h3>
 
             <table>
-                <thead>
-                    <tr>
-                        <th scope="col">Day</th>
-                        <th scope="col">Activity</th>
-                    </tr>
-                </thead>
+                <tr>
+                    <th>Prasme</th>
+                    <th>Līmenis</th>
+                </tr>
 
-                <tbody>
-                    <tr>
-                        <td>Monday</td>
-                        <td>Gym</td>
-                    </tr>
-                    <tr>
-                        <td>Wednesday</td>
-                        <td>Programming</td>
-                    </tr>
-                    <tr>
-                        <td>Friday</td>
-                        <td>Gym</td>
-                    </tr>
-                </tbody>
+                <tr>
+                    <td>HTML</td>
+                    <td>Labs</td>
+                </tr>
+
+                <tr>
+                    <td>CSS</td>
+                    <td>Vidējs</td>
+                </tr>
+
+                <tr>
+                    <td>Python</td>
+                    <td>Vidējs</td>
+                </tr>
             </table>
-        </section>
+        </article>
+    </section>
 
-        <section>
-            <h2>Contact Form</h2>
+    <section id="kontakti">
+        <h2>Kontakti</h2>
 
-            <!-- Учебная форма: отправка на сервер не подключена. -->
-            <form onsubmit="event.preventDefault(); document.getElementById('form-status').textContent = 'Demo form: your message has not been sent.';">
-                <label for="name">Name:</label><br>
-                <input type="text"
-                       id="name"
-                       name="name"
-                       autocomplete="name"
-                       required>
-                <br><br>
+        <form>
+            <label for="name">Vārds</label>
+            <input type="text" id="name" name="name">
 
-                <label for="email">Email:</label><br>
-                <input type="email"
-                       id="email"
-                       name="email"
-                       autocomplete="email"
-                       required>
-                <br><br>
+            <label for="email">E-pasts</label>
+            <input type="email" id="email" name="email">
 
-                <label for="message">Message:</label><br>
-                <textarea id="message"
-                          name="message"
-                          rows="5"
-                          required></textarea>
-                <br><br>
+            <label for="topic">Tēma</label>
+            <select id="topic" name="topic">
+                <option>Jautājums</option>
+                <option>Sadarbība</option>
+                <option>Cits</option>
+            </select>
 
-                <label for="contact-method">How to contact me:</label><br>
-                <select id="contact-method" name="contact-method">
-                    <option value="email">Email</option>
-                    <option value="phone">Phone</option>
-                    <option value="telegram">Telegram</option>
-                </select>
-                <br><br>
+            <label for="message">Ziņa</label>
+            <textarea id="message" name="message" rows="5"></textarea>
 
-                <button type="submit">Send</button>
-                <p id="form-status" role="status"></p>
-            </form>
-        </section>
-    </main>
+            <button type="submit">Nosūtīt</button>
+        </form>
+    </section>
 
-    <footer id="contact">
-        <h2>My Contacts</h2>
-        <a href="https://github.com/Skyffyy">GitHub link</a>
-    </footer>
+    <aside>
+        <h2>Papildu informācija</h2>
+
+        <p>
+            Es vēlos nākotnē strādāt IT nozarē un attīstīt savas
+            programmēšanas prasmes.
+        </p>
+    </aside>
+
+    <p class="hide-display">
+        This element was used to test display: none.
+    </p>
+
+    <p class="hide-visibility">
+        This element was used to test visibility: hidden.
+    </p>
+
+</main>
+
+<footer>
+    <p>© 2026 Georgy</p>
+</footer>
+
 </body>
 </html>

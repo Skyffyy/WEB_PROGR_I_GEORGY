@@ -1,157 +1,201 @@
+/*
+Block elements:
+h1
+p
+section
+
+Inline elements:
+a
+span
+strong
+*/
+
 body {
-    margin: 0;
-    background-color: rgb(240, 244, 248);
-    color: #243247;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-header,
-footer {
-    background-color: #1a5fb4;
-    color: white;
-    padding: 24px;
-    text-align: center;
-}
-
-h1,
-h2 {
-    font-family: Georgia, "Times New Roman", serif;
-}
-
-h1 {
-    font-size: 32px;
-}
-
-h2 {
-    font-size: 24px;
-}
-
-p {
-    line-height: 1.6;
-}
-
-nav {
-    background-color: white;
-    padding: 16px;
-    text-align: center;
-}
-
-nav ul {
-    list-style: none;
+    font-family: Arial, sans-serif;
+    background-color: rgb(240, 240, 240);
     margin: 0;
     padding: 0;
 }
 
-nav li {
-    display: inline-block;
-    margin: 8px 12px;
-}
-
-a {
-    color: #1a5fb4;
-}
-
-footer a {
+header {
+    background-color: #1a5fb4;
     color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+h1 {
+    margin-top: 0;
 }
 
 main {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-}
-
-section,
-aside {
-    border: 2px solid #718096;
-    border-radius: 12px;
-    padding: 20px;
-    margin: 24px 0;
+    width: 80%;
+    max-width: 900px;
+    margin: 20px auto;
     background-color: white;
+    padding: 20px;
+    border: 2px solid #dddddd;
+    box-sizing: border-box;
 }
-/*
-8. Pirms box-sizing: border-box (content-box):
-   kopējais platums = 280 + 15 + 15 + 4 + 4 = 318px.
-   Satura platums = 280px.
 
-9. Ar box-sizing: border-box:
-   kopējais platums = 280px.
-   Satura platums = 280 - 15 - 15 - 4 - 4 = 242px.
+section {
+    margin-bottom: 30px;
+    padding: 15px;
+    border: 1px solid #cccccc;
+}
+
+h2 {
+    background-color: lightgray;
+    padding: 8px;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav li {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+nav a {
+    display: inline-block;
+    color: white;
+    background-color: #164d91;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+}
+
+span.izcelts {
+    display: inline-block;
+    width: 200px;
+    height: 40px;
+    background-color: lightyellow;
+    border: 1px solid black;
+}
+
+/*
+When the span was inline, width and height did not work because
+inline elements are sized according to their content.
+
+After changing it to inline-block, width and height started working
+while the element could still stay in the same line with other content.
 */
 
-.kartite {
-    width: 280px;
-    padding: 15px;
-    border: 4px solid #1a5fb4;
+form {
+    max-width: 400px;
+}
+
+form label {
+    display: block;
+    margin-top: 12px;
+    margin-bottom: 5px;
+}
+
+form input,
+form select,
+form textarea {
+    display: block;
+    width: 100%;
+    padding: 8px;
     box-sizing: border-box;
-    margin: 24px 0;
-    border-radius: 12px;
-    background-color: white;
+}
+
+form button {
+    display: block;
+    margin-top: 15px;
+    padding: 10px 20px;
 }
 
 img {
+    display: block;
+    width: 250px;
     max-width: 100%;
     height: auto;
-    border-radius: 8px;
+    margin: 0 auto;
 }
 
-li {
-    line-height: 1.6;
+/*
+margin: 0 auto did not center the image while it was inline because
+an inline element stays inside a text line and does not behave like
+a block box.
+
+After using display: block, the automatic left and right margins
+can center the image.
+*/
+
+/*
+.hide-display {
+    display: none;
 }
+
+.hide-visibility {
+    visibility: hidden;
+}
+*/
+
+/*
+display: none removes the element completely and it does not take
+up any space on the page.
+
+visibility: hidden hides the element, but its space remains on the page.
+
+Both rules are commented out now, so both elements are visible again.
+*/
+
+/*
+BLOCK
+a) Does it start on a new line? Yes.
+b) Do width and height work? Yes.
+c) If width is not specified, it normally takes all available width.
+
+INLINE
+a) Does it start on a new line? No.
+b) Do width and height work? Usually no.
+c) If width is not specified, it is only as wide as its content.
+
+INLINE-BLOCK
+a) Does it start on a new line? No.
+b) Do width and height work? Yes.
+c) If width is not specified, it is only as wide as its content.
+*/
 
 table {
     width: 100%;
     border-collapse: collapse;
+    margin-top: 10px;
+}
+
+table,
+th,
+td {
+    border: 1px solid black;
 }
 
 th,
 td {
-    border: 1px solid #718096;
-    padding: 12px;
+    padding: 10px;
     text-align: left;
 }
 
 th {
-    background-color: #1a5fb4;
+    background-color: #eeeeee;
+}
+
+aside {
+    background-color: rgb(230, 240, 255);
+    padding: 15px;
+    margin-top: 20px;
+    border-left: 5px solid #1a5fb4;
+}
+
+footer {
+    background-color: #333333;
     color: white;
-}
-
-input,
-textarea,
-select {
-    box-sizing: border-box;
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #718096;
-    border-radius: 6px;
-    font: inherit;
-    color: #243247;
-    background-color: white;
-}
-
-textarea {
-    min-height: 100px;
-}
-
-button {
-    padding: 12px 24px;
-    border: 2px solid #1a5fb4;
-    border-radius: 6px;
-    background-color: #1a5fb4;
-    color: white;
-    font: inherit;
-    cursor: pointer;
-}
-
-input:focus,
-textarea:focus,
-select:focus,
-button:focus,
-a:focus {
-    outline: 3px solid #243247;
-    outline-offset: 3px;
-}
-
-footer a:focus {
-    outline-color: white;
+    text-align: center;
+    padding: 15px;
+    margin-top: 20px;
 }
