@@ -1,13 +1,12 @@
 /*
-Block elements:
-h1
-p
-section
+Block elements: h1, p, section.
+Inline elements: strong, em, span.
 
-Inline elements:
-strong
-em
-span
+Sources:
+https://www.w3schools.com/css/css3_flexbox_container.asp
+https://www.w3schools.com/css/css3_flexbox_items.asp
+https://www.w3schools.com/cssref/css3_pr_gap.php
+https://www.w3schools.com/css/css3_shadows_box.asp
 */
 
 * {
@@ -21,29 +20,84 @@ body {
     color: #222222;
 }
 
+/*
+2. The name is on the left and navigation is on the right,
+with both vertically centered. flex-wrap moves navigation
+to the next line when there is not enough space.
+*/
 header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
     background-color: #1a5fb4;
     color: white;
-    text-align: center;
     padding: 20px;
 }
 
 h1 {
-    margin: 0 0 15px 0;
+    margin: 0;
 }
 
+nav {
+    max-width: 100%;
+}
+
+/*
+1. Flex items do not have the N5 inline-block spacing caused
+by spaces or line breaks in HTML. Spacing is now controlled by gap.
+*/
 nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: flex-start;
     list-style-type: none;
     margin: 0;
     padding: 0;
 }
 
+/* The N5 navigation rule is commented out:
 nav li {
     display: inline-block;
     margin: 0 5px;
 }
+*/
 
-nav a {
+/*
+3. Main axis experiment.
+To test, temporarily enable width and one justify-content value.
+The 500px width is commented out in the final version
+so it does not cause problems at a viewport width of 390px.
+
+nav ul {
+    width: 500px;
+    justify-content: flex-start;
+}
+
+flex-start: items are placed at the start of the row.
+
+center: the group of items is centered.
+
+space-between: free space is distributed between items;
+the first and last items are placed at the edges.
+
+space-around: free space is distributed around each item;
+space at the edges is half the space between items.
+
+gap remains even when justify-content distributes extra free space.
+
+In this header, navigation normally gets its width from its content
+when width is not set. Without free space, justify-content has nothing
+to distribute, so there is no visible difference.
+
+A difference could appear without width if the container became wider
+through another layout rule.
+*/
+
+nav a,
+.button-link {
     display: inline-block;
     background-color: #1554a0;
     color: white;
@@ -52,7 +106,8 @@ nav a {
     border-radius: 5px;
 }
 
-nav a:hover {
+nav a:hover,
+.button-link:hover {
     background-color: #0d4385;
 }
 
@@ -86,6 +141,7 @@ p {
 span.highlighted {
     display: inline-block;
     width: 200px;
+    max-width: 100%;
     height: 40px;
     line-height: 40px;
     text-align: center;
@@ -96,28 +152,69 @@ span.highlighted {
 }
 
 /*
-When the span was inline, width and height did not work because
-inline elements are sized according to their content.
-
-After changing it to inline-block, width and height started working,
-while the element can still stay in the same line with other content.
+N5: width and height usually do not apply to inline elements.
+inline-block allows dimensions while keeping the element in a text line.
 */
 
-img {
+/* 4-6. Profile card without @media: the image and text are flex items. */
+.vizitkarte {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    align-items: center;
+}
+
+.vizitkarte img {
     display: block;
-    width: 220px;
+    width: 160px;
     max-width: 100%;
     height: auto;
-    margin: 15px auto;
+    flex-shrink: 0;
+    margin: 0;
     border-radius: 8px;
 }
 
-/*
-margin: 0 auto did not center the image while it was inline because
-an inline element behaves like part of a text line.
+.vizitkarte > div {
+    flex: 1 1 220px;
+    min-width: 0;
+    overflow-wrap: break-word;
+}
 
-After changing the image to display: block, the automatic left and
-right margins can center it.
+.vizitkarte h3 {
+    margin-top: 0;
+}
+
+/*
+5. To test, change the card's align-items value:
+
+stretch (default): items with an automatic cross size stretch
+to the height of the flex line. If the text is taller than the image,
+an image with height: auto can stretch vertically and lose its proportions.
+If the image already determines the line height, the text div stretches.
+
+flex-start: the top edges of the items are aligned.
+
+center: items are vertically centered. This is the final value.
+
+With flex-direction: row, justify-content works horizontally,
+while align-items works vertically within each flex line.
+*/
+
+/*
+6. flex: 1 1 220px means:
+
+1 (flex-grow): the text can grow to fill free space;
+1 (flex-shrink): the text can shrink when space is limited;
+220px (flex-basis): the initial text width before growing or shrinking.
+
+A large screen has room for the 160px image, 20px gap and 220px text.
+At a viewport width of 390px, the card's inner width is below that total.
+flex-wrap therefore moves the text to a new line below the image.
+
+220px is not a minimum width: the text can shrink on its own line.
 */
 
 ul {
@@ -146,6 +243,7 @@ th {
     background-color: #eeeeee;
 }
 
+/* 7. The N5 form rules are commented out:
 form {
     width: 100%;
     max-width: 500px;
@@ -187,6 +285,57 @@ form button {
 form button:hover {
     background-color: #1554a0;
 }
+*/
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 300px;
+    align-items: stretch;
+}
+
+form label {
+    font-weight: bold;
+}
+
+form input,
+form select,
+form textarea {
+    min-width: 0;
+    padding: 9px;
+    border: 1px solid #999999;
+    border-radius: 4px;
+    font-family: Arial, sans-serif;
+}
+
+form textarea {
+    resize: vertical;
+}
+
+form button {
+    align-self: flex-start;
+    background-color: #1a5fb4;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #1554a0;
+}
+
+/*
+Fields have equal widths without width because the cross axis
+is horizontal in a column, and align-items: stretch stretches items
+along that axis.
+
+The button would also stretch by default;
+align-self: flex-start changes only the button's alignment,
+keeping its natural width.
+*/
 
 aside {
     background-color: rgb(230, 240, 255);
@@ -196,7 +345,7 @@ aside {
     border-left: 4px solid #1a5fb4;
 }
 
-/*
+/* The N5 visibility experiments remain commented out:
 .hide-display {
     display: none;
 }
@@ -204,32 +353,27 @@ aside {
 .hide-visibility {
     visibility: hidden;
 }
+
+display: none also removes the space occupied by the element.
+visibility: hidden hides the element but preserves its space.
 */
 
 /*
-display: none removes the element completely and it does not take
-up any space on the page.
+8. Axis summary (in the usual horizontal writing mode):
 
-visibility: hidden hides the element, but its space remains on the page.
+row: the main axis is horizontal and the cross axis is vertical.
+justify-content distributes free space horizontally;
+align-items aligns items vertically within each line.
 
-Both rules are commented out now, so both elements are visible again.
-*/
+column: the main axis is vertical and the cross axis is horizontal.
+justify-content distributes free space vertically;
+align-items aligns items horizontally.
 
-/*
-BLOCK
-a) Does it start on a new line? Yes.
-b) Do width and height work? Yes.
-c) If width is not specified, it normally takes all available width.
+justify-content always works along the main axis;
+align-items always works along the cross axis.
 
-INLINE
-a) Does it start on a new line? No.
-b) Do width and height work? Usually no.
-c) If width is not specified, it is only as wide as its content.
-
-INLINE-BLOCK
-a) Does it start on a new line? No.
-b) Do width and height work? Yes.
-c) If width is not specified, it is only as wide as its content.
+align-content aligns multiple flex lines along the cross axis
+when there is extra free space in the container's cross dimension.
 */
 
 footer {

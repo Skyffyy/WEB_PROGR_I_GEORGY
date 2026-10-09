@@ -15,7 +15,7 @@
     <header>
         <h1>Georgy</h1>
 
-        <nav>
+        <nav aria-label="Main navigation">
             <ul>
                 <li><a href="#about">About me</a></li>
                 <li><a href="#skills">Skills</a></li>
@@ -27,17 +27,27 @@
     <main>
 
         <section id="about">
-
             <h2>About me</h2>
 
-            <img src="./my-photo.jpg" alt="Georgy profile photo">
+            <!-- 4. The image from N5 has been moved into the profile card. -->
+            <article class="vizitkarte">
+                <img src="./my-photo.jpg" alt="Georgy profile photo">
 
-            <p>
-                My name is <strong>Georgy</strong>.
-                I study programming and I am interested in
-                <em>information technologies</em>,
-                computer systems and software development.
-            </p>
+                <div>
+                    <h3>Georgy</h3>
+
+                    <p><strong>Programming student</strong></p>
+
+                    <p>
+                        My name is <strong>Georgy</strong>.
+                        I study programming and I am interested in
+                        <em>information technologies</em>,
+                        computer systems and software development.
+                    </p>
+
+                    <a class="button-link" href="#contact">Contact me</a>
+                </div>
+            </article>
 
             <p>
                 My main interest is
@@ -48,15 +58,12 @@
                 In my free time I enjoy sports, video games and
                 <span>learning new technologies</span>.
             </p>
-
         </section>
 
         <section id="skills">
-
             <h2>My skills</h2>
 
             <article>
-
                 <h3>Programming</h3>
 
                 <ul>
@@ -65,47 +72,36 @@
                     <li>C and C++</li>
                     <li>Git and GitHub</li>
                 </ul>
-
             </article>
 
             <article>
-
                 <h3>Skill level</h3>
 
                 <table>
-
                     <tr>
-                        <th>Skill</th>
-                        <th>Level</th>
+                        <th scope="col">Skill</th>
+                        <th scope="col">Level</th>
                     </tr>
-
                     <tr>
                         <td>HTML</td>
                         <td>Good</td>
                     </tr>
-
                     <tr>
                         <td>CSS</td>
                         <td>Intermediate</td>
                     </tr>
-
                     <tr>
                         <td>Python</td>
                         <td>Intermediate</td>
                     </tr>
-
                 </table>
-
             </article>
-
         </section>
 
         <section id="contact">
-
             <h2>Contact</h2>
 
             <form>
-
                 <label for="name">Name</label>
                 <input type="text" id="name" name="name">
 
@@ -113,7 +109,6 @@
                 <input type="email" id="email" name="email">
 
                 <label for="topic">Topic</label>
-
                 <select id="topic" name="topic">
                     <option>Question</option>
                     <option>Cooperation</option>
@@ -121,24 +116,19 @@
                 </select>
 
                 <label for="message">Message</label>
-
                 <textarea id="message" name="message" rows="5"></textarea>
 
                 <button type="submit">Send</button>
-
             </form>
-
         </section>
 
         <aside>
-
             <h2>Additional information</h2>
 
             <p>
                 I want to work in the IT industry in the future
                 and improve my programming skills.
             </p>
-
         </aside>
 
         <p class="hide-display">
