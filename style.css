@@ -7,6 +7,14 @@ https://www.w3schools.com/css/css3_flexbox_container.asp
 https://www.w3schools.com/css/css3_flexbox_items.asp
 https://www.w3schools.com/cssref/css3_pr_gap.php
 https://www.w3schools.com/css/css3_shadows_box.asp
+https://www.w3schools.com/css/css_grid_container.asp
+https://www.w3schools.com/css/css_grid_tracks.asp
+https://www.w3schools.com/css/css_grid_item.asp
+https://www.w3schools.com/css/css_grid_intro.asp
+https://www.w3schools.com/css/css_aspect-ratio.asp
+https://www.w3schools.com/css/css3_object-fit.asp
+https://www.w3schools.com/cssref/func_repeat.php
+https://www.w3schools.com/cssref/func_minmax.php
 */
 
 * {
@@ -335,6 +343,133 @@ along that axis.
 The button would also stretch by default;
 align-self: flex-start changes only the button's alignment,
 keeping its natural width.
+*/
+
+/* ===================== N7: CSS Grid gallery ===================== */
+
+/*
+1. Gallery container. display: grid makes the div a grid container
+and its 8 images become grid items.
+
+Rows were not specified, but they still appeared. Grid creates
+implicit rows automatically: when the 4 columns of a row are full,
+the next items are placed into a new row. 8 images in 4 columns
+give 2 rows. Row height is automatic (grid-auto-rows: auto),
+so it follows the content.
+
+2. fr experiment. Steps:
+  a) grid-template-columns: 200px 200px 200px 200px;
+  b) grid-template-columns: 2fr 1fr 1fr 1fr;
+  c) back to repeat(4, 1fr);
+
+What does fr divide? fr is a fraction of the FREE space in the grid
+container: the container width minus fixed sizes and gaps. With
+2fr 1fr 1fr 1fr the free space is split into 5 parts: the first
+column gets 2 parts, each other column gets 1 part.
+
+Why is there a scrollbar at 390px with 200px but not with 1fr?
+200px columns have a fixed size: 4 x 200px plus gaps is more than
+the ~260px available, so the grid does not shrink and overflows the
+page (horizontal scrollbar). 1fr columns take only the available
+space, so they shrink together with the container and never overflow.
+
+4. Responsive without @media (final version):
+grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+
+150px is the minimum width of a column: a column is never narrower.
+1fr is the maximum: the columns share the free space equally
+and grow to fill the row.
+auto-fit puts as many 150px columns as fit into the width,
+then stretches them with 1fr.
+
+Number of columns (check in DevTools):
+1280px: 5 columns
+600px: 2 columns
+390px: 1 column
+
+5. auto-fit vs auto-fill (test with only 2 images in the gallery):
+auto-fit: empty columns collapse to 0 width, so the 2 images
+stretch and fill the whole row.
+auto-fill: empty columns are kept as empty space, so the 2 images stay
+the same size as in a full row and free space remains on the right.
+The empty columns are therefore "kept" with auto-fill
+and "collapsed" with auto-fit. Final value: auto-fit.
+*/
+.galerija {
+    display: grid;
+    /* 2a. grid-template-columns: 200px 200px 200px 200px; */
+    /* 2b. grid-template-columns: 2fr 1fr 1fr 1fr; */
+    /* 4. grid-template-columns: repeat(4, 1fr);  (task 1 and 2c) */
+    /* 5. grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); */
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+}
+
+/*
+3. Same shape for all images.
+aspect-ratio: 4 / 3 forces every image box to a 4:3 shape,
+and border-radius rounds the corners.
+
+What happened to the portrait image? Its box became 4:3 (wide),
+but the picture itself is tall, so with the default object-fit: fill
+it was squeezed and stretched, and the proportions were distorted.
+
+object-fit: cover fixes this: the image keeps its proportions and
+fills the whole box, and the part that does not fit is cropped.
+What changed: no more distortion, all images have the same shape.
+What is not visible now: the cropped parts, usually the top and bottom
+of portrait images (and the sides of very wide images).
+*/
+.galerija img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+/*
+6. Big image. grid-column and grid-row are set on the item,
+not on the container.
+
+grid-column: 1 / 3 means from vertical line 1 to line 3,
+so the image covers columns 1 and 2.
+grid-row: 1 / 3 means from horizontal line 1 to line 3,
+so it covers rows 1 and 2.
+height: 100% makes the image fill the whole 2x2 area.
+
+Where did the other images go? Auto-placement puts them into the
+free cells around the big image: first to the right of it, then in the
+rows below, going around the occupied 2x2 area.
+
+Can this be done with Flexbox? Not easily. Flexbox works in one
+direction, so an item cannot span two rows while the other items
+flow around it. It would need extra wrappers or fixed sizes.
+*/
+.galerija .liela {
+    grid-column: 1 / 3;
+    grid-row: 1 / 3;
+    height: 100%;
+}
+
+/*
+7. Summary: Flexbox or Grid?
+
+Navigation: Flexbox. Items go in one direction (one row),
+and I only need spacing and alignment along that line.
+
+Profile card: Flexbox. It is one row (image and text) that wraps
+when there is not enough space. One direction is enough.
+
+Form: Flexbox. It is a single column of fields (flex-direction: column),
+again only one direction.
+
+Gallery: Grid. Rows and columns must be controlled at the same time
+(two directions), and items such as the big image must span
+several columns and rows.
+
+Rule of thumb: one direction means Flexbox,
+two directions (columns and rows together) means Grid.
 */
 
 aside {
