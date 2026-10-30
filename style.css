@@ -15,6 +15,10 @@ https://www.w3schools.com/css/css_aspect-ratio.asp
 https://www.w3schools.com/css/css3_object-fit.asp
 https://www.w3schools.com/cssref/func_repeat.php
 https://www.w3schools.com/cssref/func_minmax.php
+https://www.w3schools.com/css/css_rwd_viewport.asp
+https://www.w3schools.com/css/css3_mediaqueries.asp
+https://www.w3schools.com/css/css_font_size.asp
+https://www.w3schools.com/cssref/css_units.php
 */
 
 * {
@@ -44,8 +48,25 @@ header {
     padding: 20px;
 }
 
+/*
+N8 task 5: sizes in rem. 1rem = 16px, so 2.5rem = 40px.
+Old px version for comparison: h1 { font-size: 40px; }
+*/
 h1 {
+    font-size: 2.5rem;
     margin: 0;
+}
+
+/*
+N8 task 6: first test with font-size: 8vw
+(1280px wide: 8vw = 102.4px, 320px wide: 8vw = 25.6px).
+Final version with clamp(min, preferred, max):
+1.75rem = minimum (28px), 8vw = preferred value that depends on
+the window width, 2.5rem = maximum (40px).
+*/
+#galvenais-virsraksts {
+    /* font-size: 8vw; */
+    font-size: clamp(1.75rem, 8vw, 2.5rem);
 }
 
 nav {
@@ -135,7 +156,12 @@ section {
     border-radius: 5px;
 }
 
+/*
+N8 task 5: 1.75rem = 28px.
+Old px version for comparison: h2 { font-size: 28px; }
+*/
 h2 {
+    font-size: 1.75rem;
     background-color: #eeeeee;
     padding: 10px;
     margin-top: 0;
@@ -173,6 +199,7 @@ inline-block allows dimensions while keeping the element in a text line.
     border-radius: 10px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     align-items: center;
+    max-width: 100%; /* N8 task 2 */
 }
 
 .vizitkarte img {
@@ -446,11 +473,15 @@ Can this be done with Flexbox? Not easily. Flexbox works in one
 direction, so an item cannot span two rows while the other items
 flow around it. It would need extra wrappers or fixed sizes.
 */
+
+/* N8 task 4: commented out here, moved into
+@media (min-width: 600px) at the end of the file.
 .galerija .liela {
     grid-column: 1 / 3;
     grid-row: 1 / 3;
     height: 100%;
 }
+*/
 
 /*
 7. Summary: Flexbox or Grid?
@@ -521,3 +552,84 @@ footer {
 footer p {
     margin: 0;
 }
+
+/* ===================== N8: responsive design ===================== */
+
+/* The N8 rules are at the end of the file: @media does not change
+specificity, so it must come after the rules it overrides. */
+
+/*
+1. Viewport (innerWidth at a DevTools width of 390):
+without the meta viewport line: about 980 (the phone draws the page
+as a wide desktop page and scales it down, the text is tiny).
+with the line: 390 (the page uses the real screen width).
+
+2. What breaks at 320px (check in DevTools):
+- the profile card is tight: the image can be wider than the card
+- the gallery has 1 column and the big image can look odd
+- the navigation takes several lines
+Card width with max-width: 100%: about 194px at 320px,
+about 806px at 1280px.
+
+3. When do rules inside @media work?
+Only while the viewport width is 600px or less.
+At 390px they work, at 1280px they do not.
+*/
+@media (max-width: 600px) {
+    nav {
+        width: 100%;
+    }
+
+    nav ul {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    nav a {
+        display: block;
+        text-align: center;
+    }
+}
+
+/*
+4. Mobile-first.
+max-width means "up to this width" (this width and smaller).
+min-width means "from this width" (this width and larger).
+Styles outside @media now apply to the smallest screens
+(below 600px), and @media (min-width: 600px) adds the extras
+for larger screens. That is the mobile-first approach.
+*/
+@media (min-width: 600px) {
+    .galerija .liela {
+        grid-column: 1 / 3;
+        grid-row: 1 / 3;
+        height: 100%;
+    }
+}
+
+/*
+Extra task: for testing, replace 600px with 0px (always true)
+and drag the width in DevTools until the columns become unequal.
+minmax(150px, 1fr) with a 2x2 image needs room for at least
+2 columns of 150px plus the gap.
+
+5. rem: when the browser font size is set to "Very large",
+headings in rem grow, because rem depends on the root font size.
+Headings in px stay the same size and ignore the setting.
+
+6. clamp(1.75rem, 8vw, 2.5rem):
+1.75rem = minimum size (28px),
+8vw = preferred size (8% of the window width),
+2.5rem = maximum size (40px).
+8vw alone: 102.4px at 1280px and 25.6px at 320px.
+
+7. Summary table:
+
+What                    | Without @media            | Needs @media | Why
+Header                  | flex-wrap                 | no           | items wrap by themselves
+Profile card            | flex-wrap, flex: 1 1 220px| no           | text moves under the image by itself
+Form                    | flex column               | no           | a column works at any width
+Gallery columns         | auto-fit + minmax         | no           | the column count is calculated automatically
+Navigation              | no                        | yes          | needs a different layout (2 columns), not just a smaller one
+Big gallery image       | no                        | yes          | it covers 2x2 cells and does not fit on a narrow screen
+*/
