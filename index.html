@@ -3,65 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Georgy | Vizītkarte</title>
-    <style>
-        * {
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: Arial, sans-serif;
-            background-color: rgb(240, 240, 240);
-            color: #222222;
-            margin: 0;
-            padding: 20px;
-        }
-
-        .vizitkarte {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: 20px;
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-        }
-
-        .vizitkarte img {
-            width: 140px;
-            height: 140px;
-            object-fit: cover;
-            border-radius: 50%;
-        }
-
-        .vizitkarte h1 {
-            margin: 0 0 5px 0;
-            font-size: 1.75rem;
-        }
-
-        .vizitkarte p {
-            margin: 5px 0;
-        }
-
-        a {
-            color: #1a5fb4;
-        }
-    </style>
+    <title>Georgy | Mana vietne</title>
+    <link rel="stylesheet" href="sakums.css">
 </head>
 <body>
-    <article class="vizitkarte">
-        <img src="../profils/galerija/my-photo.jpg" alt="Georgy portrets">
+    <header>
+        <h1>Georgy</h1>
+        <p>Programmēšanas students</p>
+    </header>
 
-        <div>
-            <h1>Georgy</h1>
-            <p><strong>Programmēšanas students</strong></p>
-            <p>Interesē datorsistēmas, C/C++ un programmatūras izstrāde.</p>
-            <p>GitHub: <a href="https://github.com/Skyffyy">Skyffyy</a></p>
-            <p><a href="../index.html">Uz sākumlapu</a> · <a href="../profils/index.html">Profils</a></p>
-        </div>
-    </article>
+    <main>
+        <p class="intro">Sveiki! Šeit ir mani darbi. Izvēlies, ko apskatīt:</p>
+
+        <ul class="kartes">
+            <li>
+                <a href="vizitkarte/index.html">
+                    <span class="nosaukums">Vizītkarte</span>
+                    <span class="apraksts">Īsa informācija par mani</span>
+                </a>
+            </li>
+            <li>
+                <a href="profils/index.html">
+                    <span class="nosaukums">Profils</span>
+                    <span class="apraksts">Prasmes, galerija un kontaktforma</span>
+                </a>
+            </li>
+        </ul>
+    </main>
+
+    <footer>
+        <p>© 2026 Georgy</p>
+    </footer>
 </body>
 </html>
