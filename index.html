@@ -3,13 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Georgy | Mana vietne</title>
+    <title>Georgy | Vizītkarte</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: rgb(240, 240, 240);
+            color: #222222;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .vizitkarte {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .vizitkarte img {
+            width: 140px;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .vizitkarte h1 {
+            margin: 0 0 5px 0;
+            font-size: 1.75rem;
+        }
+
+        .vizitkarte p {
+            margin: 5px 0;
+        }
+
+        a {
+            color: #1a5fb4;
+        }
+    </style>
 </head>
 <body>
-    <h1>Georgy</h1>
-    <ul>
-        <li><a href="vizitkarte/index.html">Vizītkarte</a></li>
-        <li><a href="profils/index.html">Profils</a></li>
-    </ul>
+    <article class="vizitkarte">
+        <img src="../profils/galerija/my-photo.jpg" alt="Georgy portrets">
+
+        <div>
+            <h1>Georgy</h1>
+            <p><strong>Programmēšanas students</strong></p>
+            <p>Interesē datorsistēmas, C/C++ un programmatūras izstrāde.</p>
+            <p>GitHub: <a href="https://github.com/Skyffyy">Skyffyy</a></p>
+            <p><a href="../index.html">Uz sākumlapu</a> · <a href="../profils/index.html">Profils</a></p>
+        </div>
+    </article>
 </body>
 </html>
