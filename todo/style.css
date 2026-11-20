@@ -35,12 +35,12 @@ main {
     padding: 30px 20px;
 }
 
-.ievade-rinda {
+.input-row {
     display: flex;
     gap: 10px;
 }
 
-#jauns {
+#new-task {
     flex: 1;
     padding: 10px;
     font-size: 1rem;
@@ -62,21 +62,21 @@ button:hover {
     background-color: #144a8c;
 }
 
-#zina {
+#message {
     color: #c01c28;
     min-height: 1.2em;
 }
 
-.skaits {
+.count {
     font-weight: bold;
 }
 
-#saraksts {
+#task-list {
     list-style: none;
     padding: 0;
 }
 
-#saraksts li {
+#task-list li {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -90,23 +90,23 @@ button:hover {
     cursor: pointer;
 }
 
-#saraksts li span {
+#task-list li span {
     word-break: break-word;
 }
 
-#saraksts li button {
+#task-list li button {
     background-color: #c01c28;
     padding: 6px 12px;
     font-size: 0.9rem;
 }
 
 /* Done task: strikethrough and grey */
-li.izdarits {
+li.done {
     text-decoration: line-through;
     color: #999999;
 }
 
-#dzest-izdaritos {
+#delete-done {
     background-color: #555555;
 }
 
