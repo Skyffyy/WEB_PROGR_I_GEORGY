@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uzdevumu saraksts | Georgy</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Uzdevumu saraksts</h1>
+        <p><a href="../index.html">← Uz sākumlapu</a></p>
+    </header>
+
+    <main>
+        <div class="ievade-rinda">
+            <input type="text" id="jauns" placeholder="Jauns uzdevums...">
+            <button id="pievienot">Pievienot</button>
+        </div>
+        <p id="zina"></p>
+
+        <p class="skaits">Uzdevumi: <span id="skaits">0</span></p>
+        <ul id="saraksts"></ul>
+
+        <button id="dzest-izdaritos">Dzēst izdarītos</button>
+    </main>
+
+    <footer>
+        <p>© 2026 Georgy</p>
+    </footer>
+
+    <!--
+        Why is the script at the end of body?
+        The browser reads HTML from top to bottom. If the script were in head,
+        it would run before input, button and ul exist,
+        and getElementById would return null. At the end of body all elements are already on the page.
+    -->
+    <script src="script.js"></script>
+</body>
+</html>
